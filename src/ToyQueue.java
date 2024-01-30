@@ -3,13 +3,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.PriorityQueue;
 import java.util.Random;
-import java.util.Scanner;
 
-public class ToyStore {
+public class ToyQueue {
     private final int[] weights;
     private final PriorityQueue<Toy> queue;
 
-    public ToyStore(String[] ids, String[] names, int[] weights) {
+    public ToyQueue(String[] ids, String[] names, int[] weights) {
         this.weights = weights;
         this.queue = new PriorityQueue<>();
         for (int i = 0; i < ids.length; i++) {
@@ -28,7 +27,7 @@ public class ToyStore {
         for (int i = 0; i < weights.length; i++) {
             cumulativeWeight += weights[i];
             if (randomNum <= (cumulativeWeight * 100 / totalWeight)) {
-                return queue.toArray(new Toy[queue.size()])[i];
+                return queue.toArray(new Toy[0])[i];
             }
         }
         return null;
@@ -45,28 +44,20 @@ public class ToyStore {
         }
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         String[] ids = {"1", "2", "3"};
         String[] names = {"игрушка1", "игрушка2", "игрушка3"};
         int[] weights = {20, 20, 60};
 
-        ToyStore toyQueue = new ToyStore(ids, names, weights);
+        ToyQueue toyQueue = new ToyQueue(ids, names, weights);
         toyQueue.saveToLogFile("log.txt");
     }
 }
-public static void PrintOurToy() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Название  игрушки: ");
-    String name = scanner.nextLine();
-    System.out.println("Введите id: ");
-
-}
-
 
 class Toy implements Comparable<Toy> {
-    private String id;
-    private String name;
-    private int weight;
+    private final String id;
+    private final String name;
+    private final int weight;
 
     public Toy(String id, String name, int weight) {
         this.id = id;
@@ -74,16 +65,11 @@ class Toy implements Comparable<Toy> {
         this.weight = weight;
     }
 
-    @Override
     public String toString() {
-        return "id: " + id + ", name: " + name + ", weight: " + weight;
+        return "ID: " + id + ", Name: " + name + ", Weight: " + weight;
     }
 
-    @Override
     public int compareTo(Toy toy) {
         return Integer.compare(weight, toy.weight);
     }
-}
-
-public void main() {
 }
