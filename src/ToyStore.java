@@ -4,11 +4,11 @@ import java.io.PrintWriter;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class ToyQueue {
+public class ToyStore {
     private final int[] weights;
     private final PriorityQueue<Toy> queue;
 
-    public ToyQueue(String[] ids, String[] names, int[] weights) {
+    public ToyStore(String[] ids, String[] names, int[] weights) {
         this.weights = weights;
         this.queue = new PriorityQueue<>();
         for (int i = 0; i < ids.length; i++) {
@@ -46,10 +46,10 @@ public class ToyQueue {
 
     public static void main(String[] args) {
         String[] ids = {"1", "2", "3"};
-        String[] names = {"игрушка1", "игрушка2", "игрушка3"};
+        String[] names = {"конструктор", "робот......", "кукла......"};
         int[] weights = {20, 20, 60};
 
-        ToyQueue toyQueue = new ToyQueue(ids, names, weights);
+        ToyStore toyQueue = new ToyStore(ids, names, weights);
         toyQueue.saveToLogFile("log.txt");
     }
 }
