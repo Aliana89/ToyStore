@@ -54,7 +54,7 @@ public class ToyStore {
         toyQueue.saveToLogFile("log.txt");
     }
 }
-public static void PrintToy() {
+public static void PrintOurToy() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Название  игрушки: ");
     String name = scanner.nextLine();
